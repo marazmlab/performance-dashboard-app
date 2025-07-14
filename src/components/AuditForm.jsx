@@ -1,32 +1,42 @@
 import { useState } from "react";
 
+function normalizeUrl(value) {
+    let url = value.trim();
+    if (!/^https?:\/\//i.test(url)) {
+        url = "https://" + url;
+    }
+    return url;
+}
+
+function validateUrl(value) {
+    try {
+        new URL(normalizeUrl(value));
+        return true;
+    } catch {
+        return false;
+    }
+}
+
 function AuditForm({ onAudit }) {
     const [url, setUrl] = useState("");
     const [error, setError] = useState("");
-
-    function validateUrl(value) {
-        try {
-            new URL(value);
-            return true;
-        } catch {
-            return false;
-        }
-    }
     
     const handleSubmit = (e) => {
         e.preventDefault()
         setError("");
-        if (!validateUrl(url)) {
-            setError("Please enter a valid URL");
+        const normalized = normalizeUrl(url);
+        if (!validateUrl(normalized)) {
+            setError("Please enter a valid URL (example.com, www.example.com, https://...)");
+            return;
         }
-        onAudit(url);
+        onAudit(normalized);
     };
 
     return (
         <form onSubmit={handleSubmit} className="flex flex-col gap-2 mb-6">
             <label htmlFor="audit-url" className="font-semibold">Website URL</label>
             <input 
-                type="url" 
+                type="text" 
                 value={url}
                 onChange={e => setUrl(e.target.value)}
                 placeholder="https://example.com"

@@ -1,6 +1,21 @@
+
 # Performance Audit Dashboard
 
-A practical web application for analyzing, visualizing, and documenting website performance metrics. Includes optimization checklists, simulated audit data, and technical notes. Built with React and Tailwind CSS, focused on clean code, accessibility, and real-world developer workflow.
+> 🟢 [Live Demo on Netlify](https://marbel-performance-dashboard-app.netlify.app/)
+
+A modern web application for analyzing, visualizing, and documenting website performance metrics. Includes optimization checklists, real audit data via Google PageSpeed Insights API, and technical notes. 
+
+Built with React, Vite, and Tailwind CSS, focused on clean code, accessibility, and a professional developer workflow.
+<br>
+
+## Project Status
+🚧 This application is in continuous development.
+I plan to maintain and expand it as long as possible, adding new features, improving performance, and keeping up with best practices.
+
+<br>
+
+![Dashboard Screenshot](./public/screenshot-dashboard.jpg)
+
 
 ## Table of Contents
 
@@ -11,11 +26,23 @@ A practical web application for analyzing, visualizing, and documenting website 
 - [Development Workflow](#development-workflow)
 - [Testing](#testing)
 - [Planned Improvements](#planned-improvements)
-- [License](#license)
+
 
 ## Project Overview
 
-Performance Audit Dashboard helps frontend developers practice performance audits, track improvements, and learn best practices in web optimization. The app simulates key performance metrics, provides a checklist for optimizations, and allows for technical note-taking.
+Performance Audit Dashboard helps frontend developers practice performance audits, track improvements, and learn best practices in web optimization. 
+
+The app fetches real performance metrics, provides a checklist for optimizations, and allows for technical note-taking. The project is designed to demonstrate modern frontend skills, code quality, understanding the importance of optimization .
+
+---
+
+## MVP & Deployment
+
+- MVP achieved – project is ready for presentation and further development.
+- Ready to future improvement and learning.
+- [Live Demo](https://marbel-performance-dashboard-app.netlify.app/)
+
+---
 
 ## Tech Stack
 
@@ -26,22 +53,25 @@ Performance Audit Dashboard helps frontend developers practice performance audit
 - Chrome DevTools (performance profiling, audits)
 - Lazy loading (images, components)
 - Code splitting (React.lazy, dynamic imports)
-- Image optimization (responsive images, modern formats)
 - Minification (CSS/JS via Vite)
-- Efficient caching strategies
 - Accessibility (a11y) best practices
 - Semantic HTML
-- Bundle analysis (e.g. Vite plugin, Webpack Bundle Analyzer)
 - Prettier & ESLint for code quality
+
 
 ## Features
 
-- Display of simulated performance metrics (LCP, FCP, TTI, CLS, FID, Lighthouse Score)
+- Real performance metrics via Google PageSpeed Insights API (LCP, FCP, TTI, CLS, FID, Lighthouse Score)
 - Optimization checklist with progress tracking
-- Section for technical notes and audit conclusions
+- Technical notes section for audit conclusions
 - Modular, accessible UI components
+- Responsive design & dark mode
+- Code splitting & lazy loading (React.lazy, Suspense)
+- Unit and integration tests (Jest, Testing Library)
+- ESLint & Prettier for code quality
 - Ready for integration with headless CMS (Netlify CMS)
-- Unit and integration tests
+
+---
 
 ## Getting Started
 
@@ -60,12 +90,17 @@ Performance Audit Dashboard helps frontend developers practice performance audit
    ```
 4. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
+
 ## Development Workflow
 
-- Each feature or fix is committed with a clear, descriptive message.
-- Modular components and logic separated into hooks and utils.
-- Accessibility (a11y) and performance are prioritized.
+- Each feature or fix is committed with a clear, descriptive message (Conventional Commits).
+- Modular components and logic separated into `hooks` and `utils`.
+- Accessibility (a11y), performance, and code review are prioritized.
 - Documentation and tests are updated continuously.
+- GitHub + Netlify CI/CD: every push triggers an automatic deploy.
+
+---
+
 
 ## Testing
 
@@ -76,10 +111,46 @@ Performance Audit Dashboard helps frontend developers practice performance audit
   ```
 - Test coverage is monitored and improved regularly.
 
+---
+
+
 ## Planned Improvements
 
-- Integration with Netlify CMS for content management
-- Real Lighthouse/Chrome DevTools data integration
 - User authentication and audit history
-- Deployment to Netlify with custom domain
+- More advanced performance visualizations
+- More robust error handling and edge case coverage
+- Upgrade optimization checklist with progress tracking
+- Upgrade technical notes section for audit conclusions
+- Add detailed reports 
+- AI integration for optymatization suggestions
+
+---
+
+## Why this project?
+
+- Demonstrates proficiency with modern frontend stack (React, Vite, Tailwind, API integration, testing)
+- Example of modular, readable code and a workflow similar to real-world commercial projects
+- Ready for CMS integration and further expansion
+- Great for future developing
+
+---
+
+## How to run locally
+
+```bash
+git clone https://github.com/marazmlab/performance-dashboard-app.git
+cd performance-dashboard-app
+npm install
+npm run dev
+# For production build:
+npm run build
+npm run preview
+```
+
+---
+
+## About
+
+Created by Marek Bełz.
+Feel free to reach out via [LinkedIn](https://www.linkedin.com/in/belz/) or [GitHub](https://github.com/marazmlab).
 

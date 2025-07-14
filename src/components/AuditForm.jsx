@@ -9,8 +9,11 @@ function normalizeUrl(value) {
 }
 
 function validateUrl(value) {
+    const normalized = normalizeUrl(value);
+    const domainPattern = /^https?:\/\/([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}/;
+    if (!domainPattern.test(normalized)) return false;
     try {
-        new URL(normalizeUrl(value));
+        new URL(normalized);
         return true;
     } catch {
         return false;

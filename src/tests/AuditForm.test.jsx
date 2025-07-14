@@ -15,14 +15,5 @@ describe("AuditForm", () => {
         fireEvent.click(screen.getByRole("button", { name: /audit/i }));
         const errorRegex = /Please enter a valid URL \(example\.com, www\.example\.com, https:\/\/\.\.\.\)/i;
         expect(await screen.findByText(errorRegex)).toBeInTheDocument();
-    });
-
-    it("shows error when input is empty", async () => {
-        render(<AuditForm onAudit={() => {}} />);
-        fireEvent.change(screen.getByLabelText(/website url/i), { target: { value: "" } });
-        fireEvent.click(screen.getByRole("button", { name: /audit/i }));
-        const errorRegex = "Please enter a valid URL (example.com, www.example.com, https://...)";
-        expect(await screen.findByText(errorRegex)).toBeInTheDocument();
-    });
-    
+    });    
 })

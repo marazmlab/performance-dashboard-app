@@ -9,8 +9,9 @@ function normalizeUrl(value) {
 }
 
 function validateUrl(value) {
+    if (!value.trim()) return false;
     const normalized = normalizeUrl(value);
-    const domainPattern = /^https?:\/\/([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}/;
+    const domainPattern = /^https?:\/\/([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}/;
     if (!domainPattern.test(normalized)) return false;
     try {
         new URL(normalized);
@@ -23,16 +24,14 @@ function validateUrl(value) {
 function AuditForm({ onAudit }) {
     const [url, setUrl] = useState("");
     const [error, setError] = useState("");
-    
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         setError("");
-        const normalized = normalizeUrl(url);
-        if (!validateUrl(normalized)) {
+        if (!validateUrl(url)) {
             setError("Please enter a valid URL (example.com, www.example.com, https://...)");
             return;
         }
-        onAudit(normalized);
+        onAudit(normalizeUrl(url));
     };
 
     return (

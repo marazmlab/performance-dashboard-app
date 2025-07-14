@@ -1,9 +1,38 @@
+import { useState } from "react";
+
+import AuditForm from "../components/AuditForm"
 import Metricard from "../components/MetriCard"
 
 function Dashboard() {
+    const [metrics, setMetrics] = useState(null);
+    const [loading, setLoading] = useState(false);
+
+    async function handleAudit(url) {
+        setLoading(true);
+        setMetrics(null);
+        try {
+            const response = await fetch(
+                `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}`
+            );
+            const data = await response.json();
+            setMetrics({
+                lcp: data.lighthouseResult.audits['largest-contentful-paint'].displayValue,
+                fcp: data.lighthouseResult.audits['first-contentful-paint'].displayValue,
+                tti: data.lighthouseResult.audits['interactive'].displayValue,
+                cls: data.lighthouseResult.audits['cumulative-layout-shift'].displayValue,
+                score: data.lighthouseResult.categories.performance.score * 100,
+            });
+        } catch (err) {
+            setMetrics(null);
+            alert("Fetch data failde. Check URL adress.")
+        }
+        setLoading(false);
+    }
+
     return(
         <div className="py-8">
             <h1 className="text-2xl font-bold mb-6">Performance Audit Dashboard</h1>
+            <AuditForm onAudit={handleAudit} />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                 <Metricard label="LCP" value="1.2s" />
                 <Metricard label="FCP" value="0.9s" />

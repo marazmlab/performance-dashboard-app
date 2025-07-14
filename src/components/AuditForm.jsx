@@ -34,7 +34,7 @@ function AuditForm({ onAudit }) {
                 required
             />
             {error && <span className="text-red-500 text-sm">{error}</span>}
-            <button type="submit" className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Audit</button>
+            <button type="submit" className="bg-blue-400 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Audit</button>
         </form>
     );
 }

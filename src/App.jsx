@@ -1,10 +1,18 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import AuditDetails from "./pages/AuditDetails";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <div className="bg-red-500 text-white p-4">
-      Tailwind test
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/audit/:id" element={<AuditDetails />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App
+export default App;

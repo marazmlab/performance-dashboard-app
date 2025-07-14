@@ -10,9 +10,12 @@ function Dashboard() {
     async function handleAudit(url) {
         setLoading(true);
         setMetrics(null);
+
+        const apiKey = import.meta.env.VITE_PSI_KEY;
+
         try {
             const response = await fetch(
-                `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}`
+                `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&key=${apiKey}`
             );
             const data = await response.json();
             setMetrics({
@@ -33,14 +36,16 @@ function Dashboard() {
         <div className="py-8">
             <h1 className="text-2xl font-bold mb-6">Performance Audit Dashboard</h1>
             <AuditForm onAudit={handleAudit} />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-                <Metricard label="LCP" value="1.2s" />
-                <Metricard label="FCP" value="0.9s" />
-                <Metricard label="TTI" value="1.2s" />
-                <Metricard label="CLS" value="1.2s" />
-                <Metricard label="FID" value="15ms" />
-                <Metricard label="Lighouse Score" value="92" />
-            </div>
+            {loading && <div className="text-blue-600 mb-4">Audit results loading...</div>}
+            {metrics && (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                    <Metricard label="LCP" value={metrics.lcp}  />
+                    <Metricard label="FCP" value={metrics.fcp} />
+                    <Metricard label="TTI" value={metrics.tti} />
+                    <Metricard label="CLS" value={metrics.cls} />
+                    <Metricard label="Lighouse Score" value={metrics.score} />
+                </div>
+            )}
             <div className="mb-8">
                 <h2 className="font-semibold mb-2">Optimization Checklist</h2>
                 <ul className="space-y-2">

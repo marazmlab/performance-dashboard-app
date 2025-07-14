@@ -11,25 +11,25 @@ This file contains a flexible, living plan for the development of the Performanc
 - [x] Create and update README.md
 
 ## 2. Project Structure
-- [ ] Create folders: `components/`, `pages/`, `hooks/`, `utils/`, `tests/`, `assets/`
-- [ ] Add example files to each folder
+- [x] Create folders: `components/`, `pages/`, `hooks/`, `utils/`, `tests/`, `assets/`
+- [x] Add example files to each folder
 
 ## 3. Routing & Basic Views
-- [ ] Install and configure React Router
-- [ ] Create basic pages: Dashboard, Audit Details, NotFound
+- [x] Install and configure React Router
+- [x] Create basic pages: Dashboard, Audit Details, NotFound
 
 ## 4. Dashboard MVP
-- [ ] Display simulated performance metrics (LCP, FCP, TTI, CLS, FID, Lighthouse Score)
-- [ ] Add optimization checklist with checkboxes
-- [ ] Add notes section for audit conclusions
+- [x] Display simulated performance metrics (LCP, FCP, TTI, CLS, FID, Lighthouse Score)
+- [x] Add optimization checklist with checkboxes
+- [x] Add notes section for audit conclusions
 
 ## 5. Modular Components
-- [ ] Create reusable components (MetricCard, ChecklistItem, NoteSection, etc.)
-- [ ] Ensure accessibility (a11y) and responsive design
+- [x] Create reusable components (MetricCard, ChecklistItem, NoteSection, etc.)
+- [x] Ensure accessibility (a11y) and responsive design
 
 ## 6. Testing
-- [ ] Set up Jest + React Testing Library
-- [ ] Write unit tests for key components
+- [x] Set up Jest + React Testing Library
+- [x] Write unit tests for key components
 - [ ] Add integration tests for main flows
 
 ## 7. Optimization & Best Practices
@@ -50,8 +50,5 @@ This file contains a flexible, living plan for the development of the Performanc
 ## 10. Documentation & Final Touches
 - [ ] Update README.md with all features and instructions
 - [ ] Document architecture decisions
-- [ ] Polish UI/UX and accessibility
 
 ---
-
-Feel free to add, remove, or reorder tasks as the project evolves!

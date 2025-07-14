@@ -36,6 +36,7 @@ function AuditForm({ onAudit }) {
         <form onSubmit={handleSubmit} className="flex flex-col gap-2 mb-6">
             <label htmlFor="audit-url" className="font-semibold">Website URL</label>
             <input 
+                id="audit-url"
                 type="text" 
                 value={url}
                 onChange={e => setUrl(e.target.value)}

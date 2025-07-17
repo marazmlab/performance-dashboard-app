@@ -37,7 +37,7 @@ function Dashboard() {
     return(
         <div className="py-4">
             <SectionNavbar />
-            <section id="audit-form">
+            <section id="audit-form" className="scroll-mt-16">
                 <AuditForm onAudit={handleAudit} />
                 {loading && <div className="text-blue-600 mb-4">Audit results loading...</div>}
                 {metrics && (
@@ -50,7 +50,7 @@ function Dashboard() {
                     </div>
                 )}
             </section>
-            <section id="audit-details">
+            <section id="audit-details" className="scroll-mt-16">
                 <AuditDetails />
             </section>
         </div>

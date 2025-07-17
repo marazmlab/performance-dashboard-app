@@ -37,18 +37,22 @@ function Dashboard() {
     return(
         <div className="py-4">
             <SectionNavbar />
-            <AuditForm onAudit={handleAudit} />
-            {loading && <div className="text-blue-600 mb-4">Audit results loading...</div>}
-            {metrics && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-                    <Metricard label="LCP" value={metrics.lcp}  />
-                    <Metricard label="FCP" value={metrics.fcp} />
-                    <Metricard label="TTI" value={metrics.tti} />
-                    <Metricard label="CLS" value={metrics.cls} />
-                    <Metricard label="Lighouse Score" value={metrics.score} />
-                </div>
-            )}
-            <AuditDetails />
+            <section id="audit-form">
+                <AuditForm onAudit={handleAudit} />
+                {loading && <div className="text-blue-600 mb-4">Audit results loading...</div>}
+                {metrics && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                        <Metricard label="LCP" value={metrics.lcp}  />
+                        <Metricard label="FCP" value={metrics.fcp} />
+                        <Metricard label="TTI" value={metrics.tti} />
+                        <Metricard label="CLS" value={metrics.cls} />
+                        <Metricard label="Lighouse Score" value={metrics.score} />
+                    </div>
+                )}
+            </section>
+            <section id="audit-details">
+                <AuditDetails />
+            </section>
         </div>
     )
 }

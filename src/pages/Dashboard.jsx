@@ -8,10 +8,12 @@ import Metricard from "../components/MetriCard"
 function Dashboard() {
     const [metrics, setMetrics] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [auditData, setAuditData] = useState(null);
 
     async function handleAudit(url) {
         setLoading(true);
         setMetrics(null);
+        setAuditData(null);
 
         const apiKey = import.meta.env.VITE_PSI_KEY;
 
@@ -27,8 +29,10 @@ function Dashboard() {
                 cls: data.lighthouseResult.audits['cumulative-layout-shift'].displayValue,
                 score: data.lighthouseResult.categories.performance.score * 100,
             });
+            setAuditData(data);
         } catch (err) {
             setMetrics(null);
+            setAuditData(null);
             alert("Fetch data failde. Check URL adress.")
         }
         setLoading(false);
@@ -51,7 +55,7 @@ function Dashboard() {
                 )}
             </section>
             <section id="audit-details" className="scroll-mt-16">
-                <AuditDetails />
+                <AuditDetails data={auditData} />
             </section>
         </div>
     )

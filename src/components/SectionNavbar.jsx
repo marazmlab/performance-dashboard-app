@@ -22,7 +22,7 @@ const SectionNavbar = () => {
     };
 
     return (
-        <nav className="flex gap-4 py-2 mb-4 bg-white dark:bg-gray-900 sticky top-0 z-10">
+        <nav className="flex gap-4 py-2 mb-6 bg-white dark:bg-gray-900 sticky top-0 z-10">
             {links.map(link => (
                 <button
                     key={link.id}

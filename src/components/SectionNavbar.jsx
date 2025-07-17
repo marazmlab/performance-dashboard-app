@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useScrollSpy } from "../hooks/useScrollSpy";
 
 const SectionNavbar = () => {
-    const [active, setActive] = useState("audit-form");
+    const sectionIds = ["audit-form", "audit-details"];
+    const active = useScrollSpy(sectionIds, 80);
 
     const links = [
         { id: "audit-form", label: "URL"},
@@ -9,7 +11,6 @@ const SectionNavbar = () => {
     ];
 
     const handleClick = (id) => {
-        setActive(id);
         const el = document.getElementById(id);
         if (el) {
             el.scrollIntoView({ behavior: 'smooth', block: 'start' });

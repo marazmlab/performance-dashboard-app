@@ -16,13 +16,13 @@ function AuditForm({ onAudit }) {
 
     return (
         <form onSubmit={handleSubmit} className="flex flex-col gap-2 mb-6">
-            <label htmlFor="audit-url" className="font-semibold">Website URL</label>
+            <label htmlFor="audit-url" className="sr-only">Website URL</label>
             <input 
                 id="audit-url"
                 type="text" 
                 value={url}
                 onChange={e => setUrl(e.target.value)}
-                placeholder="https://example.com"
+                placeholder="Enter a web page URL"
                 className="p-2 rounded border bg-gray-100 dark:bg-gray-700 dark:text-white"
                 required
             />

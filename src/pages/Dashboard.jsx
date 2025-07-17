@@ -34,7 +34,6 @@ function Dashboard() {
 
     return(
         <div className="py-8">
-            <h1 className="text-2xl font-bold mb-6">Performance Audit Dashboard</h1>
             <AuditForm onAudit={handleAudit} />
             {loading && <div className="text-blue-600 mb-4">Audit results loading...</div>}
             {metrics && (

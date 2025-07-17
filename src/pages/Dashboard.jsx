@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import SectionNavbar from "../components/SectionNavbar";
 import AuditForm from "../components/AuditForm"
 import Metricard from "../components/MetriCard"
 
@@ -34,6 +35,7 @@ function Dashboard() {
 
     return(
         <div className="py-8">
+            <SectionNavbar />
             <AuditForm onAudit={handleAudit} />
             {loading && <div className="text-blue-600 mb-4">Audit results loading...</div>}
             {metrics && (

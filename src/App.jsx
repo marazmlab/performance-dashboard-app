@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
 import { Suspense, lazy } from "react";
+
+import Navbar from "./components/Navbar";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const AuditDetails = lazy(() => import("./pages/AuditDetails"));

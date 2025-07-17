@@ -15,7 +15,6 @@ function App() {
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              <Route path="/audit/:id" element={<AuditDetails />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

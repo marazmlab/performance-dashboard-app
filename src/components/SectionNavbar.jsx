@@ -10,8 +10,11 @@ const SectionNavbar = () => {
 
     const handleClick = (id) => {
         setActive(id);
-        document.getElementById(id).scrollIntoView({ behavior: 'smooth'});
-    }
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
 
     return (
         <nav className="flex gap-4 py-2 mb-4 bg-white dark:bg-gray-900 sticky top-0 z-10">

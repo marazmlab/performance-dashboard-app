@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SectionNavbar = () => {
+    const [active, setActive] = useState("audit-form");
+
+    const links = [
+        { id: "audit-form", label: "URL"},
+        { id: "audit-details", label: "Audit Details"},
+    ];
+
+    const handleClick = (id) => {
+        setActive(id);
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth'});
+    }
+
     return (
-        <nav className="flex gap-4 py-2 border-b bg-white dark:bg-gray-900 sticky top-0 z-10">
-            <a 
-                href="#audit-form"
-                className="px-4 py-2 rounded font-medium text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
-            >
-                Audit Form
-            </a>
-            <a
-                href="#audit-details"
-                className="px-4 py-2 rounded font-medium text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
-            >
-                Details
-            </a>
+        <nav className="flex gap-4 py-2 mb-4 bg-white dark:bg-gray-900 sticky top-0 z-10">
+            {links.map(link => (
+                <button
+                    key={link.id}
+                    onClick={() => handleClick(link.id)}
+                    className={`px-2 py-2 rounded font-medium transition-colors focus:outline-none
+                        ${active === link.id
+                            ? "text-gray-900 dark:text-white  underline font-bold"
+                            : "text-gray-400 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                        }`}
+                >
+                    {link.label}
+                </button>
+            ))}
         </nav>
     );
 };

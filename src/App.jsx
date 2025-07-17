@@ -4,7 +4,6 @@ import { Suspense, lazy } from "react";
 import Navbar from "./components/Navbar";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
-const AuditDetails = lazy(() => import("./pages/AuditDetails"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {

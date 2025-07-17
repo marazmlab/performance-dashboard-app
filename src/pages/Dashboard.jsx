@@ -34,7 +34,7 @@ function Dashboard() {
     }
 
     return(
-        <div className="py-8">
+        <div className="py-4">
             <SectionNavbar />
             <AuditForm onAudit={handleAudit} />
             {loading && <div className="text-blue-600 mb-4">Audit results loading...</div>}

@@ -6,14 +6,18 @@ const SectionNavbar = () => {
     const active = useScrollSpy(sectionIds, 80);
 
     const links = [
-        { id: "audit-form", label: "URL"},
+        { id: "audit-form", label: "Dashboard"},
         { id: "audit-details", label: "Audit Details"},
     ];
 
     const handleClick = (id) => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (id === "audit-form") {
+            window.scrollTo({ top: 0, behavior: 'smooth'})
+        } else{
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
     };
 

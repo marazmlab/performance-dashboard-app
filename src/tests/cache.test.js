@@ -6,7 +6,7 @@ jest.mock('../utils/api');
 
 test('uses cache for repeated audits', async () => {
   const fakeData = { lighthouseResult: { audits: {}, categories: { performance: { score: 1 } } } };
-  api.fetchPageSpeedData.mockResolvedValueOnce(fakeData);
+  api.fetchPageData.mockResolvedValueOnce(fakeData);
 
   const { result } = renderHook(() => usePageAudit());
 

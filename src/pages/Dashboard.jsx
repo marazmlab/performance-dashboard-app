@@ -20,10 +20,10 @@ function Dashboard() {
                 {!metrics && !loading && <HeroPlaceholder />}
                 {metrics && (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-                        <Metricard label="LCP" value={metrics.lcp}  />
-                        <Metricard label="FCP" value={metrics.fcp} />
-                        <Metricard label="TTI" value={metrics.tti} />
-                        <Metricard label="CLS" value={metrics.cls} />
+                        <Metricard label="Largest Contentful Paint" value={metrics.lcp}  />
+                        <Metricard label="First Contentful Paint" value={metrics.fcp} />
+                        <Metricard label="Time to Interactive" value={metrics.tti} />
+                        <Metricard label="Cumulative Layout Shift" value={metrics.cls} />
                         <Metricard label="Lighouse Score" value={metrics.score} />
                     </div>
                 )}

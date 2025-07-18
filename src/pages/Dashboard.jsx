@@ -1,5 +1,7 @@
 import { useState } from "react";
+
 import { fetchPageData } from "../utils/api";
+import { extractMetrics } from "../utils/formatters";
 
 import SectionNavbar from "../components/SectionNavbar";
 import HeroPlaceholder from "../components/HeroPlaceholder";
@@ -21,13 +23,7 @@ function Dashboard() {
 
         try {
             const data = await fetchPageData(url, apiKey);
-            setMetrics({
-                lcp: data.lighthouseResult.audits['largest-contentful-paint'].displayValue,
-                fcp: data.lighthouseResult.audits['first-contentful-paint'].displayValue,
-                tti: data.lighthouseResult.audits['interactive'].displayValue,
-                cls: data.lighthouseResult.audits['cumulative-layout-shift'].displayValue,
-                score: data.lighthouseResult.categories.performance.score * 100,
-            });
+            setMetrics(extractMetrics(data));
             setAuditData(data);
         } catch (err) {
             setMetrics(null);

@@ -4,8 +4,25 @@ import * as api from '../utils/api';
 
 jest.mock('../utils/api');
 
+beforeAll(() => {
+  window.alert = jest.fn();
+});
+
 test('uses cache for repeated audits', async () => {
-  const fakeData = { lighthouseResult: { audits: {}, categories: { performance: { score: 1 } } } };
+  const fakeData = {
+    lighthouseResult: {
+      audits: {
+        'largest-contentful-paint': { displayValue: '1.2s' },
+        'first-contentful-paint': { displayValue: '0.8s' },
+        'interactive': { displayValue: '2.0s' },
+        'cumulative-layout-shift': { displayValue: '0.01' }
+      },
+      categories: {
+        performance: { score: 1 }
+      }
+    }
+  };
+
   api.fetchPageData.mockResolvedValueOnce(fakeData);
 
   const { result } = renderHook(() => usePageAudit());
@@ -15,11 +32,11 @@ test('uses cache for repeated audits', async () => {
     await result.current.handleAudit('https://example.com', 'test-key');
   });
 
-  // second call - should be from
-  api.fetchPageSpeedData.mockClear();
+  // second call - should be from cache
+  api.fetchPageData.mockClear();
   await act(async () => {
     await result.current.handleAudit('https://example.com', 'test-key');
   });
 
-  expect(api.fetchPageSpeedData).not.toHaveBeenCalled();
+  expect(api.fetchPageData).not.toHaveBeenCalled();
 });

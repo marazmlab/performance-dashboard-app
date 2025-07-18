@@ -15,7 +15,7 @@ function AuditForm({ onAudit }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-2 mb-6">
+        <form onSubmit={handleSubmit} data-testid="audit-form" className="flex flex-col gap-2 mb-6">
             <label htmlFor="audit-url" className="sr-only">Website URL</label>
             <input 
                 id="audit-url"

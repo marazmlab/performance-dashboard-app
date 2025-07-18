@@ -10,12 +10,12 @@ import Metricard from "../components/MetriCard"
 function Dashboard() {
     const apiKey = import.meta.env.VITE_PSI_KEY;
     const { metrics, loading, auditData, handleAudit } = usePageAudit();
-    
+
     return(
         <div className="py-4">
             <SectionNavbar />
             <section id="audit-form" className="scroll-mt-16">
-                <AuditForm onAudit={handleAudit} />
+                <AuditForm onAudit={(url) => handleAudit(url, apiKey)} />
                 {loading && <div className="text-blue-600 mb-4">Audit results loading...</div>}
                 {!metrics && !loading && <HeroPlaceholder />}
                 {metrics && (

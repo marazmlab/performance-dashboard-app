@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { fetchPageData } from "../utils/api";
 import { extractMetrics } from "../utils/formatters";
 import { getCache, setCache } from "../utils/cache";
@@ -8,6 +8,17 @@ export function usePageAudit() {
   const [loading, setLoading] = useState(false);
   const [auditData, setAuditData] = useState(null);
 
+  useEffect(() => {
+    const lastUrl = localStorage.getItem("pagespeed:lastUrl");
+    if (lastUrl) {
+      const cached = getCache(`pagespeed:${lastUrl}`);
+      if (cached) {
+        setMetrics(extractMetrics(cached));
+        setAuditData(cached);
+      }
+    }
+  }, []);
+
   async function handleAudit(url, apiKey) {
     setLoading(true);
     setMetrics(null);
@@ -15,6 +26,8 @@ export function usePageAudit() {
 
     const cacheKey = `pagespeed:${url}`;
     const cached = getCache(cacheKey);
+
+    localStorage.setItem("pagespeed:lastUrl", url);
 
     if (cached) {
       setMetrics(extractMetrics(cached));

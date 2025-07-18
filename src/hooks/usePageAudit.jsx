@@ -1,31 +1,40 @@
 import { useState } from "react";
 import { fetchPageData } from "../utils/api";
 import { extractMetrics } from "../utils/formatters";
+import { getCache, setCache } from "../utils/cache";
 
 export function usePageAudit() {
-    const [metrics, setMetrics] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [auditData, setAuditData] = useState(null);
+  const [metrics, setMetrics] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [auditData, setAuditData] = useState(null);
 
-    async function handleAudit(url) {
-        setLoading(true);
-        setMetrics(null);
-        setAuditData(null);
+  async function handleAudit(url, apiKey) {
+    setLoading(true);
+    setMetrics(null);
+    setAuditData(null);
 
-        const apiKey = import.meta.env.VITE_PSI_KEY;
+    const cacheKey = `pagespeed:${url}`;
+    const cached = getCache(cacheKey);
 
-        try {
-            const data = await fetchPageData(url, apiKey);
-            setMetrics(extractMetrics(data));
-            setAuditData(data);
-        } catch (err) {
-            setMetrics(null);
-            setAuditData(null);
-            alert("Fetch data failde. Check URL adress.")
-        }
-        setLoading(false);
+    if (cached) {
+      setMetrics(extractMetrics(cached));
+      setAuditData(cached);
+      setLoading(false);
+      return;
     }
 
-    return { metrics, loading, auditData, handleAudit };
+    try {
+      const data = await fetchPageData(url, apiKey);
+      setCache(cacheKey, data);
+      setMetrics(extractMetrics(data));
+      setAuditData(data);
+    } catch (err) {
+      setMetrics(null);
+      setAuditData(null);
+      alert("Fetch data failed. Check URL address.");
+    }
+    setLoading(false);
+  }
 
+  return { metrics, loading, auditData, handleAudit };
 }

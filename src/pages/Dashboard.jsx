@@ -1,4 +1,5 @@
 import { usePageAudit } from "../hooks/usePageAudit";
+import { getApiKey } from '../utils/getApiKey';
 
 import SectionNavbar from "../components/SectionNavbar";
 import HeroPlaceholder from "../components/HeroPlaceholder";
@@ -8,7 +9,7 @@ import Metricard from "../components/MetriCard"
 
 
 function Dashboard() {
-    const apiKey = import.meta.env.VITE_PSI_KEY;
+    const apiKey = getApiKey();
     const { metrics, loading, auditData, handleAudit } = usePageAudit();
 
     return(

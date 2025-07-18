@@ -1,3 +1,8 @@
+
+jest.mock('../utils/getApiKey', () => ({
+    getApiKey: () => 'test-key'
+}));
+
 import { render, screen } from '@testing-library/react';
 import Dashboard from '../pages/Dashboard';
 

@@ -49,27 +49,27 @@ The app fetches real performance metrics, provides a checklist for optimizations
 
 ## Optimization Technologies & Tools
 
-- Lighthouse (performance audits & scoring)
-- Chrome DevTools (performance profiling, audits)
-- Lazy loading (images, components)
-- Code splitting (React.lazy, dynamic imports)
-- Minification (CSS/JS via Vite)
-- Accessibility (a11y) best practices
-- Semantic HTML
-- Prettier & ESLint for code quality
+- ***Lighthouse*** (performance audits & scoring)
+- ***Chrome DevTools*** (performance profiling, audits)
+- ***Lazy loading*** (images, components)
+- ***Code splitting*** (React.lazy, dynamic imports)
+- ***Minification*** (CSS/JS via Vite)
+- ***Accessibility*** (a11y) best practices
+- ***Semantic HTML***
+- ***Prettier & ESLint*** for code quality
 
 
 ## Features
 
-- Real performance metrics via Google PageSpeed Insights API (LCP, FCP, TTI, CLS, FID, Lighthouse Score)
-- Optimization checklist with progress tracking
-- Technical notes section for audit conclusions
-- Modular, accessible UI components
-- Responsive design & dark mode
-- Code splitting & lazy loading (React.lazy, Suspense)
-- Unit and integration tests (Jest, Testing Library)
-- ESLint & Prettier for code quality
-- Ready for integration with headless CMS (Netlify CMS)
+* Real performance metrics via Google PageSpeed Insights API (LCP, FCP, TTI, CLS, FID, Lighthouse Score)
+* Optimization checklist with progress tracking
+* Technical notes section for audit conclusions
+* Modular, accessible UI components
+* Responsive design & dark mode
+* Code splitting & lazy loading (React.lazy, Suspense)
+* Unit and integration tests (Jest, Testing Library)
+* ESLint & Prettier for code quality
+* Ready for integration with headless CMS (Netlify CMS)
 
 ---
 

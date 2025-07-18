@@ -30,4 +30,14 @@ describe("AuditForm", () => {
     expect(mockOnAudit).toHaveBeenCalledWith('https://example.com');
     expect(mockOnAudit).toHaveBeenCalledTimes(1);
   });
+
+  test('input has label or placeholder', () => {
+  render(<AuditForm onAudit={() => {}} />);
+  // checking if has label
+  const inputByLabel = screen.queryByLabelText(/website url/i);
+  // checking if has placeholder
+  const inputByPlaceholder = screen.queryByPlaceholderText(/enter a web page url/i);
+
+  expect(inputByLabel || inputByPlaceholder).toBeTruthy();
+});
 })

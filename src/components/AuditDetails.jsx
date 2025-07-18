@@ -1,10 +1,12 @@
 import React from "react";
 
 const AuditDetails = ({ data }) => {
-  if (!data) return <p>No audit data yet.</p>;
-  const audits = data.lighthouseResult.audits;
-  const url = data.lighthouseResult.finalUrl;
-  const date = new Date(data.lighthouseResult.fetchTime).toLocaleString();
+  
+  const audits = data?.lighthouseResult?.audits || {};
+  const url = data?.lighthouseResult?.finalUrl || "";
+  const date = data?.lighthouseResult?.fetchTime
+    ? new Date(data.lighthouseResult.fetchTime).toLocaleString()
+    : "";
 
   const opportunities = Object.values(audits)
     .filter(audit => audit.details && audit.details.type === "opportunity");

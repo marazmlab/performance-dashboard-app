@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import SectionNavbar from "../components/SectionNavbar";
+import HeroPlaceholder from "../components/HeroPlaceholder";
 import AuditForm from "../components/AuditForm"
 import AuditDetails from "../components/AuditDetails";
 import Metricard from "../components/MetriCard"
@@ -44,6 +45,7 @@ function Dashboard() {
             <section id="audit-form" className="scroll-mt-16">
                 <AuditForm onAudit={handleAudit} />
                 {loading && <div className="text-blue-600 mb-4">Audit results loading...</div>}
+                {!metrics && !loading && <HeroPlaceholder />}
                 {metrics && (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                         <Metricard label="LCP" value={metrics.lcp}  />

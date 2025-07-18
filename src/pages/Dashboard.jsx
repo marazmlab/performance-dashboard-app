@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { fetchPageData } from "../utils/api";
 
 import SectionNavbar from "../components/SectionNavbar";
 import HeroPlaceholder from "../components/HeroPlaceholder";
@@ -19,10 +20,7 @@ function Dashboard() {
         const apiKey = import.meta.env.VITE_PSI_KEY;
 
         try {
-            const response = await fetch(
-                `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&key=${apiKey}`
-            );
-            const data = await response.json();
+            const data = await fetchPageData(url, apiKey);
             setMetrics({
                 lcp: data.lighthouseResult.audits['largest-contentful-paint'].displayValue,
                 fcp: data.lighthouseResult.audits['first-contentful-paint'].displayValue,

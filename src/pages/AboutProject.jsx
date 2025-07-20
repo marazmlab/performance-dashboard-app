@@ -1,10 +1,15 @@
+import { Link } from "react-router-dom";
+
 const AboutProject = () => (
-  <section id="about" className="scroll-mt-16 py-8">
-    <h2 className="text-2xl font-bold mb-2">About Project</h2>
+  <main className="max-w-2xl mx-auto py-8 px-4">
+    <Link to="/" className="text-gray-600 hover:underline mb-4 block">
+      ← Back to Dashboard
+    </Link>
+    <h1 className="text-3xl font-bold mb-4">About Project</h1>
     <p>
-      This section will display information about the project. Content will be managed via Strapi Cloud.
+      This page will display information about the project. Content can be managed via Strapi Cloud in the future.
     </p>
-  </section>
+  </main>
 );
 
 export default AboutProject;

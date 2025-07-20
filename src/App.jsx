@@ -4,6 +4,7 @@ import { Suspense, lazy } from "react";
 import Navbar from "./components/Navbar";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
+const AboutProject = lazy(() => import("./pages/AboutProject"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/" element={<Dashboard />} />
+              <Route path="/About" element={<AboutProject />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

@@ -40,7 +40,7 @@ const SectionNavbar = () => {
         ))}
       </div>
       <Link
-        to="/about"
+        to="/About"
         className="ml-auto px-3 py-2 rounded font-medium text-gray-600 hover:underline transition"
       >
         About Project

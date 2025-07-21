@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import remarkBreaks from "remark-breaks";
+
 const API_URL = "https://devoted-flowers-148a8fb309.strapiapp.com/api/about-project";
 
 function AboutProject() {
@@ -14,7 +18,7 @@ function AboutProject() {
 
   if (!data) return <div className="text-center py-10 text-lg">Loading...</div>;
 
-  const { title, description, repoUrl, demoUrl } = data;
+  const { title, readme, repoUrl, demoUrl } = data;
 
   return (
     <section className="max-w-3xl mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-lg p-8  transition-colors">
@@ -35,17 +39,10 @@ function AboutProject() {
           Check GitHub repo
         </a>
       </div>
-      
-      <div className="prose dark:prose-invert mb-6">
-        {Array.isArray(description)
-          ? description.map((block, idx) => (
-              <p key={idx} className="mb-">
-                {block.children
-                  ? block.children.map((child, cidx) => child.text).join(" ")
-                  : ""}
-              </p>
-            ))
-          : description}
+      <div>
+        <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
+          {readme}
+        </ReactMarkdown>
       </div>
     </section>
   );

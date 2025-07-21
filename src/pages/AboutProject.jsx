@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
+import rehypeRaw from "rehype-raw";
 
 const API_URL = "https://devoted-flowers-148a8fb309.strapiapp.com/api/about-project";
 
@@ -39,8 +40,19 @@ function AboutProject() {
           Check GitHub repo
         </a>
       </div>
-      <div>
-        <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
+      <div className="prose dark:prose-invert max-w-full">
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm, remarkBreaks]}
+          rehypePlugins={[rehypeRaw]}
+          components={{
+            pre: ({ node, ...props }) => (
+              <pre {...props} className="break-words overflow-x-auto" />
+            ),
+            table: ({ node, ...props }) => (
+              <table {...props} className="block w-full overflow-x-auto" />
+            ),
+          }}
+        >
           {readme}
         </ReactMarkdown>
       </div>

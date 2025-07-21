@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useScrollSpy } from "../hooks/useScrollSpy";
 import { Link } from "react-router-dom";
 
-const SectionNavbar = () => {
+const SectionNavbar = ({ setFormError, isAuditReady }) => {
   const sectionIds = ["audit-form", "audit-details"];
   const active = useScrollSpy(sectionIds, 80);
 
@@ -13,11 +13,15 @@ const SectionNavbar = () => {
 
   const handleClick = (id) => {
     if (id === "audit-form") {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!isAuditReady) {
+        if (setFormError) setFormError("Provide valid URL");
+      } else {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
     }
   };

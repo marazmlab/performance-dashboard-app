@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { normalizeUrl, validateUrl } from '../utils/url';
 
-function AuditForm({ onAudit }) {
+function AuditForm({ onAudit, error, setError }) {
   const [url, setUrl] = useState("");
-  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();

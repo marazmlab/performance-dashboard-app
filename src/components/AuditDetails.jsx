@@ -2,7 +2,7 @@ import React from "react";
 
 const AuditDetails = ({ data }) => {
   // for future fix !
-  if (!data) return <p></p>; 
+  if (!data) return null; 
   const audits = data.lighthouseResult.audits;
   const url = data.lighthouseResult.finalUrl;
   const date = new Date(data.lighthouseResult.fetchTime).toLocaleString();

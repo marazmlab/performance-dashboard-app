@@ -21,14 +21,14 @@ function AboutProject() {
   const { title, readme, repoUrl, demoUrl } = data;
 
   return (
-    <section className="max-w-3xl mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-lg p-8  transition-colors">
+    <section className="w-full max-w-3xl mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 my-6 transition-colors">
       <Link
         to="/"
         className="inline-block text-gray-800 hover:underline dark:text-gray-100 mb-4"
       >
         ← Back to Dashboard
       </Link>
-      <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">{title}</h1>
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">{title}</h1>
       <div className="flex gap-4 mb-6">
         <a
           href={repoUrl}

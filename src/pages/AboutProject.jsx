@@ -22,7 +22,7 @@ function AboutProject() {
   const { title, readme, repoUrl, demoUrl } = data;
 
   return (
-    <section className="w-full max-w-3xl mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 my-6 transition-colors">
+    <section className="w-full max-w-3xl mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-lg p-4 sm:p-6 md:p-8  transition-colors">
       <Link
         to="/"
         className="inline-block text-gray-800 hover:underline dark:text-gray-100 mb-4"

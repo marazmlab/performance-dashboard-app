@@ -11,6 +11,8 @@ const API_URL = "https://devoted-flowers-148a8fb309.strapiapp.com/api/about-proj
 function AboutProject() {
   const [data, setData] = useState(null);
 
+  // NEXT.js for future
+
   useEffect(() => {
     const cached = sessionStorage.getItem("aboutProject");
     if (cached) {

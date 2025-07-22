@@ -8,6 +8,7 @@ import HeroPlaceholder from "../components/HeroPlaceholder";
 import AuditForm from "../components/AuditForm"
 import AuditDetails from "../components/AuditDetails";
 import Metricard from "../components/MetriCard"
+import Loader from "../components/Loader";
 
 
 function Dashboard() {
@@ -15,11 +16,11 @@ function Dashboard() {
   const { metrics, loading, auditData, handleAudit } = usePageAudit();
   const [formError, setFormError] = useState("");
 
-  const handleDetailsClick = () => {
-    if (!auditData) {
-      setFormError("Provide valid URL");
-    }
-  };
+  // const handleDetailsClick = () => {
+  //   if (!auditData) {
+  //     setFormError("Provide valid URL");
+  //   }
+  // };
 
   return (
     <div className="py-4">
@@ -36,7 +37,7 @@ function Dashboard() {
           error={formError}
           setError={setFormError}
         />
-        {loading && <div className="text-blue-600 mb-4">Audit results loading...</div>}
+        {loading && <Loader />}
         {!metrics && !loading && <HeroPlaceholder />}
         {metrics && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">

@@ -1,8 +1,9 @@
 import React from "react";
+import Loader from "../components/Loader";
 
 const AuditDetails = ({ data }) => {
-  // for future fix !
-  if (!data) return null; 
+
+  if (!data) return <Loader />;
   const audits = data.lighthouseResult.audits;
   const url = data.lighthouseResult.finalUrl;
   const date = new Date(data.lighthouseResult.fetchTime).toLocaleString();

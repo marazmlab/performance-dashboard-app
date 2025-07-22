@@ -3,7 +3,7 @@ import Loader from "../components/Loader";
 
 const AuditDetails = ({ data }) => {
 
-  if (!data) return <Loader />;
+  if (!data) return null;
   const audits = data.lighthouseResult.audits;
   const url = data.lighthouseResult.finalUrl;
   const date = new Date(data.lighthouseResult.fetchTime).toLocaleString();

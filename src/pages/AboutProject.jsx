@@ -6,6 +6,8 @@ import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
 
+import Loader from "../components/Loader";
+
 const API_URL = "https://devoted-flowers-148a8fb309.strapiapp.com/api/about-project";
 
 function AboutProject() {
@@ -27,7 +29,7 @@ function AboutProject() {
       });
   }, []);
 
-  if (!data) return <div className="text-center py-10 text-lg">Loading...</div>;
+  if (!data) return <Loader />;
 
   const { title, readme, repoUrl, demoUrl } = data;
 

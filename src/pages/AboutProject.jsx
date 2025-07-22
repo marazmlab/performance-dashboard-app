@@ -12,9 +12,17 @@ function AboutProject() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
+    const cached = sessionStorage.getItem("aboutProject");
+    if (cached) {
+      setData(JSON.parse(cached));
+      return;
+    }
     fetch(API_URL)
       .then(res => res.json())
-      .then(json => setData(json.data));
+      .then(json => {
+        setData(json.data);
+        sessionStorage.setItem("aboutProject", JSON.stringify(json.data));
+      });
   }, []);
 
   if (!data) return <div className="text-center py-10 text-lg">Loading...</div>;

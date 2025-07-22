@@ -16,12 +16,6 @@ function Dashboard() {
   const { metrics, loading, auditData, handleAudit } = usePageAudit();
   const [formError, setFormError] = useState("");
 
-  const handleDetailsClick = () => {
-    if (!auditData) {
-      setFormError("Provide valid URL");
-    }
-  };
-
   return (
     <div className="py-4">
       <SectionNavbar

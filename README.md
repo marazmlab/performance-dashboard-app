@@ -14,7 +14,7 @@ I plan to maintain and expand it as long as possible, adding new features, impro
 
 <br>
 
-![Dashboard Screenshot](./public/screenshot-dashboard.jpg)
+![Dashboard Screenshot](./public/screenshot-2.jpg)
 
 
 ## Table of Contents

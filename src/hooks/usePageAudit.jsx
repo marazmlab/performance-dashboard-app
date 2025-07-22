@@ -45,8 +45,9 @@ export function usePageAudit() {
       setMetrics(null);
       setAuditData(null);
       alert("Fetch data failed. Check URL address.");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }
 
   return { metrics, loading, auditData, handleAudit };
